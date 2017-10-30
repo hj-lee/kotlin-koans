@@ -1,5 +1,8 @@
 package v_builders
 
+import com.google.common.collect.MapMaker
+import javafx.beans.binding.MapBinding
+import jdk.nashorn.internal.codegen.MapCreator
 import util.TODO
 import java.util.*
 
@@ -28,12 +31,17 @@ fun todoTask37(): Nothing = TODO(
     """
 )
 
+fun buildMap(build: MutableMap<Int, String>.() -> Unit): Map<Int,String> {
+    val map = HashMap<Int, String>()
+    map.build()
+    return map
+}
+
 fun task37(): Map<Int, String> {
-    todoTask37()
-//    return buildMap {
-//        put(0, "0")
-//        for (i in 1..10) {
-//            put(i, "$i")
-//        }
-//    }
+    return buildMap {
+        put(0, "0")
+        for (i in 1..10) {
+            put(i, "$i")
+        }
+    }
 }
